@@ -9,6 +9,7 @@ from plot import InputParameters, create_plot, fig, draw
 root = Tk()
 root.wm_title("Построение графиков производных")
 root.geometry('1200x600')
+root.config(background='ghostwhite')
 
 frame1 = Frame(root, bg='ghostwhite')
 frame1.place(x=0, y=0, relwidth=0.75, relheight=1)
@@ -19,10 +20,11 @@ canvas.get_tk_widget().place(x=0, y=0, relwidth=1, relheight=0.9)
 
 toolbar = NavigationToolbar2Tk(canvas, root)
 toolbar.config(background='ghostwhite')
+toolbar.message_label.config(background='ghostwhite')
 toolbar.update()
 
 frame2 = Frame(root, bg='ghostwhite')
-frame2.place(relx=0.75, y=0, relwidth=0.25, relheight=1)
+frame2.place(relx=0.75, y=0, relwidth=0.25, relheight=0.9)
 
 
 def create_labels():
