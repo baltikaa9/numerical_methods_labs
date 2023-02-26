@@ -46,6 +46,10 @@ def create_entries():
     entry_a.insert(0, '-100')
     entry_b.insert(0, '1000')
     entry_N.insert(0, '1000')
+
+    entry_a.bind('<Return>', run)
+    entry_b.bind('<Return>', run)
+    entry_N.bind('<Return>', run)
     return entry_a, entry_b, entry_N
 
 

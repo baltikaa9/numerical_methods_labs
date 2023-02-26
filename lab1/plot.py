@@ -6,10 +6,12 @@ fig = plt.Figure(figsize=(5, 5), facecolor='ghostwhite')
 
 @dataclass
 class InputParameters:
-    a: float = -100
-    b: float = 1000
-    N: int = 1000
-    h: float = (b - a) / N
+    a: float
+    b: float
+    N: int
+
+    def __post_init__(self):
+        self.h = (self.b - self.a) / self.N
 
 
 def create_plot():
