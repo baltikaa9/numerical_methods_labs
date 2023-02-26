@@ -1,0 +1,4 @@
+.idea
+lab1/main.py
+venv
+*.pyc
