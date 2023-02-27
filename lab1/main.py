@@ -20,7 +20,7 @@ canvas.get_tk_widget().place(x=0, y=0, relwidth=1, relheight=0.9)
 
 toolbar = NavigationToolbar2Tk(canvas, root)
 toolbar.config(background='ghostwhite')
-toolbar.message_label.config(background='ghostwhite')
+toolbar._message_label.config(background='ghostwhite')
 toolbar.update()
 
 frame2 = Frame(root, bg='ghostwhite')
