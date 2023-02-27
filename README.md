@@ -12,3 +12,4 @@
     `pip install -r requirements.txt`
 * Теперь можно запускать `main.py`
 
+(Чтобы деактивировать виртуальное окружение введите  `deaactivate`
