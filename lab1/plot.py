@@ -16,25 +16,31 @@ class InputParameters:
 
 
 def create_plot():
-    ax_1 = fig.add_subplot(131)
+    ax_1 = fig.add_subplot(231)
     ax_1.set(title="f'(x)",
              xlabel='x',
              ylabel='y',
              facecolor='ghostwhite')
     ax_1.grid()
-    ax_2 = fig.add_subplot(132)
+    ax_2 = fig.add_subplot(232)
     ax_2.set(title="f''(x)",
              xlabel='x',
              ylabel='y',
              facecolor='ghostwhite')
     ax_2.grid()
-    ax_3 = fig.add_subplot(133)
+    ax_3 = fig.add_subplot(233)
     ax_3.set(title="f'''(x)",
              xlabel='x',
              ylabel='y',
              facecolor='ghostwhite')
     ax_3.grid()
-    return [ax_1, ax_2, ax_3]
+    ax_4 = fig.add_subplot(234)
+    ax_4.set(title="f'(x)",
+             xlabel='x',
+             ylabel='y',
+             facecolor='ghostwhite')
+    ax_4.grid()
+    return [ax_1, ax_2, ax_3, ax_4]
 
 
 def draw(ax, x, y, **kwargs):

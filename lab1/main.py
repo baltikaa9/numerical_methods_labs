@@ -92,7 +92,7 @@ def data_entry() -> InputParameters:
 
 def run(event=None):
     fig.clear()
-    xlist, ylist, ylist_1, ylist_2, ylist_3 = [], [], [], [], []
+    xlist, ylist_1_an, ylist_1, ylist_2, ylist_3, ylist_2_an, ylist_3_an, ylist_1_left, ylist_1_right = [], [], [], [], [], [], [], [], []
 
     params = data_entry()
     x = params.a
@@ -102,16 +102,24 @@ def run(event=None):
         x += params.h
 
     for x in xlist:
-        ylist.append((df_dx_an(x)))
+        ylist_1_an.append((df_dx_an(x)))
         ylist_1.append(df_dx(x, params.h))
         ylist_2.append(d2f_dx2(x, params.h))
+        ylist_2_an.append(d2f_dx2_an(x))
         ylist_3.append(d3f_dx3(x, params.h))
+        ylist_3_an.append(d3f_dx3_an(x))
+        ylist_1_left.append(df_dx_left(x, params.h))
+        ylist_1_right.append(df_dx_right(x, params.h))
 
     axes = create_plot()
     draw(axes[0], xlist, ylist_1, color='black')
-    draw(axes[0], xlist, ylist, color='crimson', linestyle='--')
-    draw(axes[1], xlist, ylist_2, color='green')
-    draw(axes[2], xlist, ylist_3, color='purple')
+    draw(axes[0], xlist, ylist_1_an, color='crimson', linestyle='--')
+    draw(axes[1], xlist, ylist_2, color='black')
+    draw(axes[1], xlist, ylist_2_an, color='crimson', linestyle='--')
+    draw(axes[2], xlist, ylist_3, color='black')
+    draw(axes[2], xlist, ylist_3_an, color='crimson', linestyle='--')
+    draw(axes[3], xlist, ylist_1_left, color='black')
+    draw(axes[3], xlist, ylist_1_right, color='crimson', linestyle='--')
     canvas.draw()
 
 

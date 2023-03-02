@@ -2,4 +2,4 @@
 lab1/main1.py
 venv
 __pycache__/
-
+*.pdf
