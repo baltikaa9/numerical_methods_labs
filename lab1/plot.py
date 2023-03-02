@@ -34,8 +34,8 @@ def create_plot():
              ylabel='y',
              facecolor='ghostwhite')
     ax_3.grid()
-    ax_4 = fig.add_subplot(234)
-    ax_4.set(title="f'(x)",
+    ax_4 = fig.add_subplot(212)
+    ax_4.set(title="left & right f'(x)",
              xlabel='x',
              ylabel='y',
              facecolor='ghostwhite')

@@ -112,14 +112,18 @@ def run(event=None):
         ylist_1_right.append(df_dx_right(x, params.h))
 
     axes = create_plot()
-    draw(axes[0], xlist, ylist_1, color='black')
-    draw(axes[0], xlist, ylist_1_an, color='crimson', linestyle='--')
-    draw(axes[1], xlist, ylist_2, color='black')
-    draw(axes[1], xlist, ylist_2_an, color='crimson', linestyle='--')
-    draw(axes[2], xlist, ylist_3, color='black')
-    draw(axes[2], xlist, ylist_3_an, color='crimson', linestyle='--')
-    draw(axes[3], xlist, ylist_1_left, color='black')
-    draw(axes[3], xlist, ylist_1_right, color='crimson', linestyle='--')
+    draw(axes[0], xlist, ylist_1, color='black', label='числ')
+    draw(axes[0], xlist, ylist_1_an, color='crimson', linestyle='--', label='анал')
+    draw(axes[1], xlist, ylist_2, color='black', label='числ')
+    draw(axes[1], xlist, ylist_2_an, color='crimson', linestyle='--', label='анал')
+    draw(axes[2], xlist, ylist_3, color='black', label='числ')
+    draw(axes[2], xlist, ylist_3_an, color='crimson', linestyle='--', label='анал')
+    draw(axes[3], xlist, ylist_1_left, color='black', label='лев')
+    draw(axes[3], xlist, ylist_1_right, color='crimson', linestyle='--', label='прав')
+
+    for ax in axes:
+        ax.legend()
+
     canvas.draw()
 
 
