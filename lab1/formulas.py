@@ -1,9 +1,13 @@
 from math import sqrt
+from typing import Callable
+
+from plot import InputParameters
 
 
 def f(x: float) -> float | None:
     try:
         y = (x ** 6 + 8 * x ** 3 - 128) / sqrt(8 - x ** 3)
+        # y = ((1 + x**8) * sqrt(1 + x**8)) / (12 * x**12)
     #        y = ((2 * x + 1) * sqrt(x * x - x)) / (x * x)
     except (ZeroDivisionError, ValueError):
         return
@@ -13,6 +17,7 @@ def f(x: float) -> float | None:
 def df_dx_an(x: float) -> float | None:
     try:
         y = (9 * x ** 5) / (2 * sqrt(8 - x ** 3))
+        # y = (- sqrt(1 + x**8)) / x**13
     except (ZeroDivisionError, ValueError):
         return
     return y
@@ -28,7 +33,7 @@ def df_dx(x: float, h: float) -> float | None:
 
 def df_dx_left(x: float, h: float) -> float | None:
     try:
-        y = (f(x) - f(x - h)) / (h)
+        y = (f(x) - f(x - h)) / h
     except TypeError:
         return
     return y
@@ -36,7 +41,7 @@ def df_dx_left(x: float, h: float) -> float | None:
 
 def df_dx_right(x: float, h: float) -> float | None:
     try:
-        y = (f(x + h) - f(x)) / (h)
+        y = (f(x + h) - f(x)) / h
     except TypeError:
         return
     return y
@@ -73,3 +78,20 @@ def d3f_dx3_an(x: float) -> float | None:
     except (ZeroDivisionError, ValueError):
         return
     return y
+
+
+def calculate_derivative(params: InputParameters, func: Callable) -> tuple[list, list]:
+    xlist, ylist = [], []
+    x = params.a
+
+    while x < params.b:
+        xlist.append(x)
+        x += params.h
+
+    for x in xlist:
+        try:
+            ylist.append(func(x, params.h))
+        except TypeError:
+            ylist.append(func(x))
+
+    return xlist, ylist

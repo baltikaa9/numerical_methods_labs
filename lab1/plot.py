@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import matplotlib.pyplot as plt
 
-fig = plt.Figure(figsize=(5, 5), facecolor='ghostwhite')
+fig = plt.Figure(figsize=(5, 5), facecolor='gainsboro')
 
 
 @dataclass
@@ -15,33 +15,16 @@ class InputParameters:
         self.h = (self.b - self.a) / self.N
 
 
-def create_plot():
-    ax_1 = fig.add_subplot(231)
-    ax_1.set(title="f'(x)",
-             xlabel='x',
-             ylabel='y',
-             facecolor='ghostwhite')
-    ax_1.grid()
-    ax_2 = fig.add_subplot(232)
-    ax_2.set(title="f''(x)",
-             xlabel='x',
-             ylabel='y',
-             facecolor='ghostwhite')
-    ax_2.grid()
-    ax_3 = fig.add_subplot(233)
-    ax_3.set(title="f'''(x)",
-             xlabel='x',
-             ylabel='y',
-             facecolor='ghostwhite')
-    ax_3.grid()
-    ax_4 = fig.add_subplot(212)
-    ax_4.set(title="left & right f'(x)",
-             xlabel='x',
-             ylabel='y',
-             facecolor='ghostwhite')
-    ax_4.grid()
-    return [ax_1, ax_2, ax_3, ax_4]
+class Graph:
+    def __init__(self, params: InputParameters, pos: int, title: str):
+        self.params = params
+        self.ax = fig.add_subplot(pos)
+        self.ax.set(title=title,
+                    xlabel='x',
+                    ylabel='y',
+                    facecolor='ghostwhite')
+        self.ax.grid()
 
-
-def draw(ax, x, y, **kwargs):
-    ax.plot(x, y, **kwargs)
+    def draw(self, x: list, y: list, **kwargs):
+        self.ax.plot(x, y, **kwargs)
+        self.ax.legend()
