@@ -4,7 +4,9 @@ from math import sqrt
 def f(x: float) -> float | None:
     try:
         y = (x ** 6 + 8 * x ** 3 - 128) / sqrt(8 - x ** 3)
-    #        y = ((2 * x + 1) * sqrt(x * x - x)) / (x * x)
+        #        y = ((2 * x + 1) * sqrt(x * x - x)) / (x * x)
+        # y = (2*x**2-x-1) / (3 * sqrt(2+4*x))
+        # y = ((1 + x ** 8) * sqrt(1 + x ** 8)) / (12 * x**12)
     except (ZeroDivisionError, ValueError):
         return
     return y
@@ -13,6 +15,7 @@ def f(x: float) -> float | None:
 def df_dx_an(x: float) -> float | None:
     try:
         y = (9 * x ** 5) / (2 * sqrt(8 - x ** 3))
+        # y = - sqrt(x**8 + 1) / x**13
     except (ZeroDivisionError, ValueError):
         return
     return y
