@@ -9,7 +9,7 @@ from plot import InputParameters, fig, Graph
 
 root = Tk()
 root.wm_title("Построение графиков производных")
-root.geometry('1680x900')
+root.geometry('1488x800')
 root.config(background='ghostwhite')
 
 frame1 = Frame(root, bg='ghostwhite')
@@ -111,6 +111,7 @@ def run(event=None):
         fig.clear()
         graph = Graph(params, 111, "f(x)")
 
+        graph.draw_Ox(params.x0, params.x1)
         graph.draw(*calculate_function(params, f), color='black')
 
         if method.get() == 0:
