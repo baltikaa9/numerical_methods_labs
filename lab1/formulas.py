@@ -1,14 +1,23 @@
+from dataclasses import dataclass
 from math import sqrt
 from typing import Callable
 
-from plot import InputParameters
+
+@dataclass
+class InputParameters:
+    a: float
+    b: float
+    N: int
+
+    def __post_init__(self):
+        self.h = (self.b - self.a) / self.N
 
 
 def f(x: float) -> float | None:
     try:
         y = (x ** 6 + 8 * x ** 3 - 128) / sqrt(8 - x ** 3)
         # y = ((1 + x**8) * sqrt(1 + x**8)) / (12 * x**12)
-    #        y = ((2 * x + 1) * sqrt(x * x - x)) / (x * x)
+        # y = ((2 * x + 1) * sqrt(x * x - x)) / (x * x)
     except (ZeroDivisionError, ValueError):
         return
     return y

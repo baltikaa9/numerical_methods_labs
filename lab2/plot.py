@@ -5,7 +5,7 @@ fig = plt.Figure(figsize=(5, 5), facecolor='gainsboro')
 
 class Graph:
     def __init__(self, pos: int, title: str):
-        self.ax = fig.add_subplot(pos)
+        self.ax = fig.add_subplot(pos) if pos is not None else fig.add_subplot()
         self.ax.set(title=title,
                     xlabel='x',
                     ylabel='y',

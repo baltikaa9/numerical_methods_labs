@@ -5,7 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 import matplotlib.pyplot as plt
 
 from formulas import *
-from plot import InputParameters, fig, Graph
+from plot import fig, Graph
 
 root = Tk()
 root.wm_title("Построение графиков производных")
