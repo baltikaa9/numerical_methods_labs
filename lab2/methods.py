@@ -1,7 +1,13 @@
+from dataclasses import dataclass
 from math import sqrt, sin, fabs
 from typing import Callable
 
-from plot import InputParameters
+
+@dataclass
+class InputParameters:
+    x0: float
+    x1: float
+    eps: float
 
 
 def f(x: float):

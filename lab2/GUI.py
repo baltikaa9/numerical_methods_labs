@@ -5,7 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 import matplotlib.pyplot as plt
 
 from methods import *
-from plot import InputParameters, fig, Graph
+from plot import fig, Graph
 
 root = Tk()
 root.wm_title("Построение графиков производных")
@@ -109,11 +109,11 @@ def data_entry() -> InputParameters | None:
 def run(event=None):
     if (params := data_entry()) is not None:
         fig.clear()
-        graph = Graph(params, 111, "f(x)")
+        graph = Graph(111, "f(x)")
 
         graph.draw(*calculate_function(params, f), color='black')
 
-        if method.get() == 0:
+        if not method.get():
             x = dichotomy_method(f, params.x0, params.x1, params.eps)
             if x is None:
                 messagebox.showerror('Метод дихотомии', f'Невозможно отыскать корень уравнения, '
