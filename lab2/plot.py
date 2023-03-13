@@ -15,3 +15,8 @@ class Graph:
     def draw(self, x: list, y: list, **kwargs):
         self.ax.plot(x, y, **kwargs)
         # self.ax.legend()
+
+    def draw_Ox(self, left, right):
+        x = [x for x in range(int(left), int(right + 1))]
+        y = [0] * int(right - left + 1)
+        self.draw(x, y, color='black')

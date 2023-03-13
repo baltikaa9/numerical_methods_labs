@@ -111,6 +111,7 @@ def run(event=None):
         fig.clear()
         graph = Graph(111, "f(x)")
 
+        graph.draw_Ox(params.x0, params.x1)
         graph.draw(*calculate_function(params, f), color='black')
 
         if not method.get():
