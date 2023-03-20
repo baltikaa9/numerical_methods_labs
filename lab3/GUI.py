@@ -115,6 +115,8 @@ def run(event=None):
 
         graph.draw(*calculate_function(params, f), color='black')
 
+        canvas.draw()
+
         if not method.get():
             x = rectangle_method(params)
             messagebox.showinfo('Метод прямоугольников', f'x ≈ {x}\t')
@@ -124,8 +126,6 @@ def run(event=None):
         else:
             x = simpson_formula(params)
             messagebox.showinfo('Формула Симпсона', f'x ≈ {x}\t')
-
-    canvas.draw()
 
 
 def _quit():
