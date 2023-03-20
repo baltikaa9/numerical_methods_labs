@@ -1,0 +1,12 @@
+Numerical mathematics
+Gauss method for systems of linear equations.
+System:
+      -9       0       1      -9       1       7 |      -38
+       1      -5       9      -2      -6       8 |      -14
+       1      -8       9      -3       5      -7 |      196
+       2      -3       1      -4       4      -9 |      128
+       4      -7      -6       2       4       1 |       62
+      -2      -0      -4       1      -7       7 |     -117
+Roots:
+       1      -9       4      -1       7      -7
+Finished.
