@@ -9,7 +9,7 @@ from methods import *
 from plot import fig, Graph
 
 root = Tk()
-root.wm_title("Построение графиков производных")
+root.wm_title("Метод Рунге-Кутта")
 root.geometry('1680x900')
 root.config(background='ghostwhite')
 
