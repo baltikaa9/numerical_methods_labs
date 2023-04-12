@@ -1,8 +1,6 @@
-import time
 from dataclasses import dataclass
 from math import cos, tan, exp, cosh, sin, sqrt
 
-import matplotlib.pyplot as plt
 import numpy as np
 
 

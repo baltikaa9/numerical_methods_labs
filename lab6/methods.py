@@ -18,9 +18,9 @@ class InputParameters:
 
 def f(x: float):
     try:
-        # return cos(x + 1) * tan(x + 1)
+        return cos(x + 1) * tan(x + 1)
         # return exp(cos(x) + 1)
-        return cosh(x)**2 + sin(x)
+        # return cosh(x)**2 + sin(x)
     except ZeroDivisionError:
         return
 
@@ -41,4 +41,4 @@ def golden_section_search(params: InputParameters, min: bool = True):
         else:
             a = x1
 
-    return f(a)
+    return f((a + b) / 2)
