@@ -57,3 +57,4 @@ def gradient_descent(graph=None):
 if __name__ == '__main__':
     x, y = gradient_descent()
     print(x, (3-x)/2, sqrt(F(x, y)))
+    print(-1-2*y**2, y, sqrt(F(x, y)))
