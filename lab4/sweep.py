@@ -57,22 +57,23 @@ def _find_roots(A, B, a, b, d) -> list:
     for i in range(n - 1, -1, -1):
         X[i] = A[i] * X[i + 1] + B[i]
 
-    return list(map(round, X))
+    # return list(map(round, X))
+    return X
 
 
 def sweep(matrix, d):
     # Коэффициенты перед переменными
     a, b, c = _calc_coeffs(matrix)
-    print(f'a: {a}\nb: {b}\nc: {c}\n')
+    # print(f'a: {a}\nb: {b}\nc: {c}\n')
 
     # Прогоночные Коэффициенты
     A, B = _calc_all_sweep_coeffs(a, b, c, d)
-    print(f'A: {A}\nB: {B}\n')
+    # print(f'A: {A}\nB: {B}\n')
 
     # Корни
     X = _find_roots(A, B, a, b, d)
-    print("\n".join("X{0} =\t{1:10.2f}".format(i + 1, x) for i, x in
-                    enumerate(X)))
+    # print("\n".join("X{0} =\t{1:10.2f}".format(i + 1, x) for i, x in
+    #                 enumerate(X)))
 
     return X
 
