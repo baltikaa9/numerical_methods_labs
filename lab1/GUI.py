@@ -99,10 +99,10 @@ def data_entry() -> InputParameters | None:
 def run(event=None):
     if (params := data_entry()) is not None:
         fig.clear()
-        first_derivative = Graph(params, 231, "f'(x)")
-        left_right_first = Graph(params, 212, "left & right f'(x)")
-        second_derivative = Graph(params, 232, "f''(x)")
-        third_derivative = Graph(params, 233, "f'''(x)")
+        first_derivative = Graph(231, "f'(x)")
+        left_right_first = Graph(212, "left & right f'(x)")
+        second_derivative = Graph(232, "f''(x)")
+        third_derivative = Graph(233, "f'''(x)")
 
         first_derivative.draw(*calculate_derivative(params, df_dx), color='black', label='числ')
         first_derivative.draw(*calculate_derivative(params, df_dx_an), color='crimson', linestyle='--', label='анал')
