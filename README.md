@@ -1,6 +1,9 @@
 ﻿# Numerical methods labs :)
 
 Инструкция для запуска:
+* Склонируйте репозиторий:
+  `git clone https://github.com/baltikaa9/numerical_methods_labs.git`
+
 * Создайте виртуальное окружение. Для этого откройте папку проекта в консоли и введите команду:
 
     `python -m venv venv`
