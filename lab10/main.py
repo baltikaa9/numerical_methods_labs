@@ -1,4 +1,4 @@
-from GUI import init, root
+from .GUI import init, root
 
 if __name__ == '__main__':
     init()

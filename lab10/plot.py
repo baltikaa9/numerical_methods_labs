@@ -14,7 +14,10 @@ class Graph:
                     facecolor='ghostwhite')
         self.ax.grid()
 
-    def draw(self, x: list | Any, y: list | Any, **kwargs):
+    def draw(self, x: list[float] | Any, y: list[float] | Any, **kwargs):
         self.ax.plot(x, y, **kwargs)
         if 'label' in kwargs:
-            self.ax.legend()
+            self.ax.legend(loc='lower left')
+
+    def scatter(self, x: float, y: float, **kwargs):
+        self.ax.scatter(x, y, **kwargs)

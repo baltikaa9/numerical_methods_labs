@@ -4,8 +4,8 @@ from tkinter import messagebox
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 import matplotlib.pyplot as plt
 
-from methods import *
-from plot import fig, Graph
+from .methods import *
+from .plot import fig, Graph
 
 root = Tk()
 root.wm_title("Метод стрельбы")
@@ -107,12 +107,17 @@ def run(event=None):
         graph = Graph(title='y(x)')
 
         try:
-            y = shooting_method(params)
+            y, attemps = shooting_method(params)
         except ValueError as err:
             messagebox.showerror('Error', err)
             return
 
-        graph.draw(params.x, y, color='black')
+        for i, attemp in enumerate(attemps):
+            graph.draw(params.x, attemp, linestyle='dashed', label=f'Попытка {i}')
+
+        graph.draw(params.x, y, color='black', label='Результат')
+
+        graph.scatter(params.x1, params.y1, color='red', s=100)
 
         canvas.draw()
 

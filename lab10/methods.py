@@ -23,9 +23,10 @@ def system(x: float, u: tuple[float, float]):
     u[1] = z
     """
     return u[1], u[0] + 2 * x
+    # return u[1], -100 * u[0]
 
 
-def runge_kutta(system: Callable, interval, u0):
+def runge_kutta(system: Callable, interval, u0) -> tuple[list[float], list[float]]:
     y, z = [], []
     y0 = u0[0]
     z0 = u0[1]
@@ -56,47 +57,48 @@ def runge_kutta(system: Callable, interval, u0):
     return y, z
 
 
-def dichotomy(f: Callable, x0, x1, eps, params: InputParameters):
-    if (f(x0, params) * f(x1, params)) > 0:
+def dichotomy(shoot: Callable, x0, x1, eps, params: InputParameters):
+    if (shoot(x0, params)[-1] * shoot(x1, params)[-1]) > 0:
         return
+
+    attemps = []
 
     while abs(x1 - x0) > eps:
         x2 = (x0 + x1) / 2
 
-        if f(x2, params) > params.y1:
+        y = shoot(x2, params)
+
+        attemps.append(y)
+
+        y1 = y[-1]
+
+        if y1 > params.y1:
             x1 = x2
         else:
             x0 = x2
 
-    x = (x0 + x1) / 2
-    return x
+    return y, attemps
 
 
-def shoot(a, params: InputParameters):
+def shoot(a, params: InputParameters) -> list[float]:
     y0 = (params.y0, a)
 
     sol = runge_kutta(system, [params.x0, params.x1], y0)
-    y1 = sol[0][-1]
-    return y1
+    return sol[0]   # y
 
 
 def shooting_method(params: InputParameters):
-    a0 = -100
-    a1 = 100
+    a0 = -10
+    a1 = 10
 
-    a = dichotomy(shoot, a0, a1, 1e-6, params)
+    y, attemps = dichotomy(shoot, a0, a1, 1e-6, params)
 
-    if a is None:
+    if y is None:
         a0 = -10000
         a1 = 10000
-        a = dichotomy(shoot, a0, a1, 1e-6, params)
+        y, attemps = dichotomy(shoot, a0, a1, 1e-6, params)
 
-    try:
-        y = runge_kutta(system, [params.x0, params.x1], [params.y0, a])
-    except TypeError:
-        raise ValueError('Неадекватные начальные условия')
-
-    return y[0]
+    return y, attemps
 
 
 if __name__ == '__main__':
